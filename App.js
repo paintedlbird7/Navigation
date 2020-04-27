@@ -11,6 +11,11 @@ function HomeScreen({ navigation}) {
         title="Go to Details"
         onPress={() => navigation.navigate('Details')}
       />
+
+      <Button
+        title="Go to Profile"
+        onPress={() => navigation.navigate('Profile')}
+      />
     </View>
   );
 }
@@ -19,6 +24,14 @@ function DetailsScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Details Screen</Text>
+    </View>
+  );
+}
+
+function ProfileScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Profile Screen</Text>
     </View>
   );
 }
@@ -35,13 +48,19 @@ function App() {
 </Stack.Screen> */}
 
         <Stack.Screen 
-        name="Home" 
+        name="Home"  
         component={HomeScreen}
         options={{ title: 'Overview' }} 
         />
+
         <Stack.Screen 
-        name="Details" 
+        name="Details" // View Orders 
         component={DetailsScreen} />
+
+        <Stack.Screen 
+        name="Profile" // View Profile
+        component={ProfileScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
