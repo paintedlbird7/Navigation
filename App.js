@@ -1,82 +1,55 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // HomeScreen = OrderScreen
 // DetailsScreen = OrdersScreen
 // ProfileScreen = ProfileScreen 
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Details')}
-      />
-
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
+      <Text>Home!</Text>
     </View>
   );
 }
 
-function DetailsScreen({ navigation }) {
+function SettingsScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push('Details')}
-      />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Settings!</Text>
     </View>
   );
 }
 
-function ProfileScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Profile Screen</Text>
+// function ProfileScreen() {
+//   return (
+//     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//       <Text>Profile Screen</Text>
       {/* <Button
         title="Go to Profile... again"
         onPress={() => navigation.push('Profile')}
       /> */}
-    </View>
+  //   </View>
+  // );
+// }
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }
 
-const Stack = createStackNavigator();
-
-function App() {
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        
-      {/* <Stack.Screen name="Home">
-  {props => <HomeScreen {...props} extraData={someData} />}
-</Stack.Screen> */}
-
-        <Stack.Screen 
-        name="Home"  
-        component={HomeScreen}
-        options={{ title: 'Overview' }} 
-        />
-
-        <Stack.Screen 
-        name="Details" // View Orders 
-        component={DetailsScreen} />
-
-        <Stack.Screen 
-        name="Profile" // View Profile
-        component={ProfileScreen} />
-
-      </Stack.Navigator>
-    </NavigationContainer>
+      <MyTabs />
+      </NavigationContainer>       
   );
 }
-
-export default App;
