@@ -12,10 +12,10 @@ function OrderScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Order!</Text>
-      <Button
+      {/* <Button
         title="Go to Profile"
         onPress={() => navigation.navigate('Profile')}
-      />
+      /> */}
     </View>
   );
 }
@@ -24,11 +24,19 @@ function ProfileScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Profile!</Text>
-      <Button title="Go to Order" onPress={() => navigation.navigate('Order')} />
+      {/* <Button title="Go to Order" onPress={() => navigation.navigate('Order')} /> */}
     </View>
   );
 }
 
+function OrdersScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Orders!</Text>
+      {/* <Button title="Go to Orders" onPress={() => navigation.navigate('Orders')} /> */}
+    </View>
+  );
+}
 
 const Tab = createBottomTabNavigator();
 
@@ -46,6 +54,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Order" component={OrderScreen} />
+        <Tab.Screen name="Orders" component={OrdersScreen} />
         <Tab.Screen name="Profile" component={ProfileScreen} />      
       </Tab.Navigator>
     </NavigationContainer>
