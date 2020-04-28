@@ -9,37 +9,88 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // // SettingsScreen = ProfileScreen
 // // DetailsScreen = OrdersScreen
 
-function OrdersScreen() {
+// View Orders that you ordered
+function OrdersScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Orders Screen!</Text>
-    </View>
-  );
-}
-
-function OrderScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Order screen</Text>
-      <Button
-        title="Go to Orders"
+      <Text>View Orders!</Text>
+        <Button
+        title="You are @ Orders Screen: Go to Single Meal"
         onPress={() => navigation.navigate('Orders')}
       />
     </View>
   );
 }
 
+
+
+
+
+
+// Home/ Order menu
+function OrderScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Order </Text>
+      <Button
+        title="You are @ Orders Screen: Go to Single Meal"
+        onPress={() => navigation.navigate('Orders')}
+      />
+    </View>
+  );
+}
+
+
+
+
+
+
+
+// User Profile
 function ProfileScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Profile Screen</Text>
       <Button
-        title="Go to Orders"
+        title="You are @ Profile: Go to Single Meal"
         onPress={() => navigation.navigate('Orders')}
       />
     </View>
   );
 }
+
+
+
+
+// function SingleScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Single Meal Screen</Text>
+//       <Button
+//         title="You are @ Single: Go to Single Meal"
+//         onPress={() => navigation.navigate('Orders')}
+//       />
+//     </View>
+//   );
+// }
+
+// const SingleStack = createStackNavigator();
+
+// function SingleStackScreen() {
+//   return (
+//     <SingleStack.Navigator>
+//       <SingleStack.Screen name="Order" component={OrderScreen} />
+//       <SingleStack.Screen name="Orders" component={OrdersScreen} />
+//       {/* <OrderStack.Screen name="Single" component={SingleScreen} /> */}
+//     </SingleStack.Navigator>
+//   );
+// }
+
+
+
+
+
+
 
 const OrderStack = createStackNavigator();
 
@@ -48,9 +99,30 @@ function OrderStackScreen() {
     <OrderStack.Navigator>
       <OrderStack.Screen name="Order" component={OrderScreen} />
       <OrderStack.Screen name="Orders" component={OrdersScreen} />
+      {/* <OrderStack.Screen name="Single" component={SingleScreen} /> */}
     </OrderStack.Navigator>
   );
 }
+
+
+
+
+
+const OrdersStack = createStackNavigator();
+
+function OrdersStackScreen() {
+  return (
+    <OrdersStack.Navigator>
+      <OrdersStack.Screen name="Order" component={OrderScreen} />
+      <OrdersStack.Screen name="Orders" component={OrdersScreen} />
+      {/* <OrderStack.Screen name="Single" component={SingleScreen} /> */}
+    </OrdersStack.Navigator>
+  );
+}
+
+
+
+
 
 const ProfileStack = createStackNavigator();
 
@@ -63,6 +135,12 @@ function ProfileStackScreen() {
   );
 }
 
+
+
+
+
+
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -70,7 +148,10 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Order" component={OrderStackScreen} />
+        <Tab.Screen name="Orders" component={OrdersStackScreen} />
         <Tab.Screen name="Profile" component={ProfileStackScreen} />
+        {/* <Tab.Screen name="Single" component={SingleStackScreen} /> */}
+
       </Tab.Navigator>
     </NavigationContainer>
   );
