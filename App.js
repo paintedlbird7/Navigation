@@ -18,8 +18,8 @@ import {
 // Home/ Order menu
 function HomeScreen({ navigation }) {
   const Arr = [
-    { id: 1, title: 'Pancakes and Eggs' },
-    { id: 2, title: 'Biscuits and Gravy' },
+    { id: '1', title: 'Pancakes and Eggs' },
+    { id: '2', title: 'Biscuits and Gravy' },
   ];
 
   return (
@@ -36,7 +36,13 @@ function HomeScreen({ navigation }) {
                 });
               }}>
               <Text style={styles.title}>{itemData.item.title}</Text>
+              <Button
+        title="You are @ Home Screen: Go to Single Meal"
+        onPress={() => navigation.navigate('Orders')}
+      />
             </TouchableOpacity>
+            {/* <Text>Home - Order </Text> */}
+   
           </View>
         );
       }}
@@ -90,10 +96,10 @@ function OrdersScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>View Orders!</Text>
-        <Button
+        {/* <Button
         title="You are @ Orders Screen: Go to Single Meal"
         onPress={() => navigation.navigate('Orders')}
-      />      
+      />       */}
     </View>
   );
 }
@@ -121,10 +127,10 @@ function ProfileScreen({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Profile Screen</Text>
-      <Button
+      {/* <Button
         title="You are @ Profile: Go to Single Meal"
         onPress={() => navigation.navigate('Orders')}
-      />
+      /> */}
     </View>
   );
 }
