@@ -10,6 +10,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
+import SingleMealScreen from '../Navigation/src/screens/SingleMealScreen';
 // // HomeScreen = OrderScreen
 // // SettingsScreen = ProfileScreen
 // // DetailsScreen = OrdersScreen
@@ -17,14 +18,14 @@ import {
 
 // Home/ Order menu
 function HomeScreen({ navigation }) {
-  const Arr = [
+  const meals = [
     { id: '1', title: 'Pancakes and Eggs' },
     { id: '2', title: 'Biscuits and Gravy' },
   ];
 
   return (
     <FlatList
-      data={Arr}
+      data={meals}
       renderItem={itemData => {
         return (
           <View style={styles.cardContainer}>
@@ -38,7 +39,7 @@ function HomeScreen({ navigation }) {
               <Text style={styles.title}>{itemData.item.title}</Text>
               <Button
         title="You are @ Home Screen: Go to Single Meal"
-        onPress={() => navigation.navigate('Orders')}
+        onPress={() => navigation.navigate('Orders')} // TODO: change Orders to Single Meal & handle it (add to stacks)
       />
             </TouchableOpacity>
             {/* <Text>Home - Order </Text> */}
@@ -92,10 +93,16 @@ function HomeStackScreen() {
 
 
 // View All Orders that you ordered
+// TODO:  maybe duplicate & change this below to Single Order 
 function OrdersScreen({ navigation }) {
+  // const meal = navigation.route.params;
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>View Orders!</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}> 
+      <Text>You ordered Pancakes & Eggs!</Text> 
+            {/* <Text>{meal.title}</Text> */}
+
+      {/* TODO: here is Single card when user clicks on card stack to show food list that was clicked */}
+        
         {/* <Button
         title="You are @ Orders Screen: Go to Single Meal"
         onPress={() => navigation.navigate('Orders')}
@@ -170,28 +177,28 @@ function App() {
 
 
 
-function SingleScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Single Meal Screen</Text>
-      <Button
-        title="You are @ Single: Go to Single Meal"
-        onPress={() => navigation.navigate('Orders')}
-      />
-    </View>
-  );
-}
+// function SingleScreen({ navigation }) {
+//   return (
+//     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//       <Text>Single Meal Screen</Text>
+//       <Button
+//         title="You are @ Single: Go to Single Meal"
+//         onPress={() => navigation.navigate('Orders')}
+//       />
+//     </View>
+//   );
+// }
 
-const SingleStack = createStackNavigator();
+// const SingleStack = createStackNavigator();
 
-function SingleStackScreen() {
-  return (
-    <SingleStack.Navigator>
-      <SingleStack.Screen name="Home" component={HomeScreen} />
-      <SingleStack.Screen name="Orders" component={OrdersScreen} />
-      {/* <SingleStack.Screen name="Single" component={SingleScreen} /> */}
-    </SingleStack.Navigator>
-  );
-}
+// function SingleStackScreen() {
+//   return (
+//     <SingleStack.Navigator>
+//       <SingleStack.Screen name="Home" component={HomeScreen} />
+//       <SingleStack.Screen name="Orders" component={OrdersScreen} />
+//       {/* <SingleStack.Screen name="Single" component={SingleScreen} /> */}
+//     </SingleStack.Navigator>
+//   );
+// }
 
 export default App;
